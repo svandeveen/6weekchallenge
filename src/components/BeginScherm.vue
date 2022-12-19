@@ -1,10 +1,11 @@
 <template>
   <div v-if="challenge">
     <h1>Welkom {{ challenge.options.naam }}</h1>
-    <p>Je hebt om dit moment {{ challenge.subchallenges.length }} challenges geregistreerd. </p>
+    <p>Je hebt op dit moment {{ challenge.subchallenges.length }} challenges geregistreerd.</p>
     <ul>
-      <li v-for="subchallenge in challenge.subchallenges" v-bind:key="subchallenge.nummer"><a
-          v-bind:href="'#challenge/' + subchallenge.nummer">{{ subchallenge.naam }}</a></li>
+      <li v-for="subchallenge in challenge.subchallenges" v-bind:key="subchallenge.nummer">
+        <router-link :to="`/challenge/${subchallenge.nummer}`">{{ subchallenge.naam }}</router-link>
+      </li>
     </ul>
   </div>
   <div v-else>
